@@ -4,6 +4,7 @@ import './App.css';
 import Cart from "./Cart";
 import Contact from "./Contact";
 import ErrorPage from "./ErrorPage";
+import { GlobalStyle } from "./GlobalStyle";
 import Home from "./Home";
 import Products from "./Products";
 import SingleProduct from "./SingleProduct";
@@ -12,6 +13,7 @@ import SingleProduct from "./SingleProduct";
 function App() {
   return (
     <BrowserRouter>
+    <GlobalStyle/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
