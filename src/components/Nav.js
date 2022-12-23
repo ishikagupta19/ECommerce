@@ -1,10 +1,15 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import {RiShoppingCart2Line} from 'react-icons/ri';
+import React from "react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+import { RiShoppingCart2Line } from "react-icons/ri";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MdCloseFullscreen } from "react-icons/md";
 
 const Nav = () => {
-    const Nav = styled.nav`
+  const [menuIcon, setMenuIcon] = useState();
+
+  const Nav = styled.nav`
     .navbar-lists {
       display: flex;
       gap: 4.8rem;
@@ -43,7 +48,6 @@ const Nav = () => {
       .cart-trolley {
         position: relative;
         font-size: 3.2rem;
-        
       }
       .cart-total--item {
         width: 2.4rem;
@@ -138,31 +142,52 @@ const Nav = () => {
   `;
 
   return (
-  <Nav>
-    <div className="navbar">
+    <Nav>
+      <div className={menuIcon ? "navbar active" : "navbar"}>
         <ul className="navbar-lists">
-            <li>
-                <NavLink to="/" className="navbar-link home-link">Home</NavLink>
-            </li>
-            <li>
-                <NavLink to="/about" className="navbar-link home-link">About</NavLink>
-            </li>
-            <li>
-                <NavLink to="/products" className="navbar-link home-link">Products</NavLink>
-            </li>
-            <li>
-                <NavLink to="/contact" className="navbar-link home-link">Contact</NavLink>
-            </li>
-            <li>
-                <NavLink to="/cart"  className="navbar-link cart-trolley--link">
-                <RiShoppingCart2Line className="cart-trolley"/>
-                <span className="cart-total--item"> 9</span>
-                </NavLink>
-            </li>
-            
+          <li>
+            <NavLink to="/" className="navbar-link home-link" onClick={() => setMenuIcon(false)}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/about" className="navbar-link home-link" onClick={() => setMenuIcon(false)}>
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/products" className="navbar-link home-link" onClick={() => setMenuIcon(false)}>
+              Products
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact" className="navbar-link home-link" onClick={() => setMenuIcon(false)}>
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/cart" className="navbar-link cart-trolley--link" onClick={() => setMenuIcon(false)}>
+              <RiShoppingCart2Line className="cart-trolley" />
+              <span className="cart-total--item"> 9</span>
+            </NavLink>
+          </li>
         </ul>
-    </div>
-  </Nav>
+        {/* buttons for open & close */}
+        <div className="mobile-navbar-btn">
+          <GiHamburgerMenu
+            name="menu-outline"
+            className="mobile-nav-icon"
+            onClick={() => setMenuIcon(true)}
+          />
+
+          <MdCloseFullscreen
+            name="close-outline"
+            className="mobile-nav-icon close-outline"
+            onClick={() => setMenuIcon(false)}
+          />
+        </div>
+      </div>
+    </Nav>
   );
 };
 
