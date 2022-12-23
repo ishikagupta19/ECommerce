@@ -9,6 +9,7 @@ import { GlobalStyle } from "./GlobalStyle";
 import Home from "./Home";
 import Products from "./Products";
 import SingleProduct from "./SingleProduct";
+import Header from "./components/Header";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       text:"rgba(29,29,28,0.8)",
       white:"#fff",
       black:"#212529",
+      blue:"#00B2A7",
       helper:"#8490ff",
       bg:"#F6F8FA",
       footer_bg:"#0a1435",
@@ -38,6 +40,7 @@ function App() {
     <ThemeProvider theme={theme}>
     <BrowserRouter>
     <GlobalStyle/>
+    <Header />
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
